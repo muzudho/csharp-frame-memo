@@ -5,7 +5,7 @@ using System.Text;
 
 using System.Drawing;//Ｂｉｔｍａｐ
 
-namespace Xenon.FrameMemo
+namespace Grayscale.FrameMemo
 {
     public class MemorySpriteImpl
     {

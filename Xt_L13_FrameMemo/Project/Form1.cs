@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SavingImage = Grayscale.FrameMemo.Actions.SavingImage;
 
-namespace Xenon.FrameMemo
+namespace Grayscale.FrameMemo
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class Form1 : Form
     {
 
@@ -64,13 +63,15 @@ namespace Xenon.FrameMemo
                 switch (e.KeyCode)
                 {
                     case Keys.S:
+                        // [Ctrl]+[S]
                         {
-                            // [Ctrl]+[S]
-                            Actions.Save1(
-                                this.ucCanvas1.Infodisplay,
-                                this.ucCanvas1.PcchkInfo,
-                                this.ucCanvas1
-                                );
+                            // [画像を保存]ボタンを押したときの内容。
+                            {
+                                SavingImage.ContextModel context = new SavingImage.ContextModel(this.ucCanvas1);
+                                SavingImage.InputModel input = new SavingImage.InputModel(this.ucCanvas1.Infodisplay, this.ucCanvas1.InfoCheckBox);
+                                SavingImage.OutputModel output = new SavingImage.OutputModel();
+                                SavingImage.Action.Perfrom(context, input, output);
+                            }
                         }
                         break;
                 }

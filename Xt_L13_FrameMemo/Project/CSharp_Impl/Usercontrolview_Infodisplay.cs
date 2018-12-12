@@ -5,7 +5,7 @@ using System.Text;
 
 using System.Drawing;
 
-namespace Xenon.FrameMemo
+namespace Grayscale.FrameMemo
 {
 
     /// <summary>

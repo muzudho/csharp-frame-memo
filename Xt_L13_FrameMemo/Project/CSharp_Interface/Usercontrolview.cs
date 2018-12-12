@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Xenon.FrameMemo
+namespace Grayscale.FrameMemo
 {
     /// <summary>
     /// フォームも、引数コントロールも、情報表示コントロールもこれ。

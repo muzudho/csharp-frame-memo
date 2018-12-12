@@ -1,4 +1,4 @@
-﻿namespace Xenon.FrameMemo
+﻿namespace Grayscale.FrameMemo
 {
     partial class Form1
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.ucCanvas1 = new Xenon.FrameMemo.UcCanvas();
+            this.ucCanvas1 = new Grayscale.FrameMemo.UcCanvas();
             this.SuspendLayout();
             // 
             // xyMemoUc1

@@ -1,4 +1,4 @@
-﻿namespace Xenon.FrameMemo
+﻿namespace Grayscale.FrameMemo
 {
     partial class CustomcontrolButtonEx
     {

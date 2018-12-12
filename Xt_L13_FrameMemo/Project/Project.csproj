@@ -8,8 +8,8 @@
     <ProjectGuid>{0536FB15-5272-499B-96F9-DCDAAE2B12B4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Xenon.FrameMemo</RootNamespace>
-    <AssemblyName>FrameMemo</AssemblyName>
+    <RootNamespace>Grayscale.FrameMemo</RootNamespace>
+    <AssemblyName>Grayscale.FrameMemo</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
@@ -22,18 +22,30 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\bin\Grayscale.FrameMemo.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\bin\Grayscale.FrameMemo.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>csharp-frame-memo.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,13 +68,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\SavingAllFrames\Action.cs" />
+    <Compile Include="Actions\SavingAllFrames\ContextModel.cs" />
+    <Compile Include="Actions\SavingAllFrames\InputModel.cs" />
+    <Compile Include="Actions\SavingAllFrames\OutputModel.cs" />
+    <Compile Include="Actions\SavingImage\Action.cs" />
+    <Compile Include="Actions\SavingImage\ContextModel.cs" />
+    <Compile Include="Actions\SavingImage\InputModel.cs" />
+    <Compile Include="Actions\SavingImage\OutputModel.cs" />
+    <Compile Include="Commons\ImageHelper.cs" />
     <Compile Include="CSharp_Impl\CustomcontrolButtonEx.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CSharp_Impl\CustomcontrolButtonEx.Designer.cs">
       <DependentUpon>CustomcontrolButtonEx.cs</DependentUpon>
     </Compile>
-    <Compile Include="CSharp_Impl\Func\Actions.cs" />
     <Compile Include="CSharp_Impl\PartnumberconfigImpl.cs" />
     <Compile Include="CSharp_Impl\Usercontrolview_Infodisplay.cs" />
     <Compile Include="CSharp_Impl\UcCanvas.cs">
@@ -95,6 +115,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="csharp-frame-memo.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

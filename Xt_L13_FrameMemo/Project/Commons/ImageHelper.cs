@@ -1,86 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
-using System.IO;
-
-namespace Xenon.FrameMemo
+namespace Grayscale.FrameMemo.Commons
 {
     /// <summary>
-    /// 画像を保存。
+    /// 
     /// </summary>
-    public abstract class Actions
+    public sealed class ImageHelper
     {
-
-
-
-        #region アクション
-        //────────────────────────────────────────
-
         /// <summary>
-        /// [画像を保存]ボタンを押したときの内容。
-        /// </summary>
-        /// <param name="infodisplay"></param>
-        /// <param name="infoChk"></param>
-        /// <param name="ucCanvas"></param>
-        public static void Save1(
-            Usercontrolview_Infodisplay infodisplay,
-            CheckBox infoChk,
-            UcCanvas ucCanvas
-            )
-        {
-            if (null != infodisplay.MemorySprite.Bitmap)
-            {
-
-                Bitmap bm = Actions.CreateSaveImage(
-                    infodisplay,
-                    infoChk,
-                    ucCanvas
-                    );
-
-
-
-                // ファイル名を適当に作成。
-                StringBuilder s = new StringBuilder();
-                {
-                    s.Append(Application.StartupPath);
-                    s.Append("\\ScreenShot\\");
-
-                    DateTime now = System.DateTime.Now;
-                    s.Append(now.Year);
-                    s.Append("_");
-                    s.Append(now.Month);
-                    s.Append("_");
-                    s.Append(now.Day);
-                    s.Append("_");
-                    s.Append(now.Hour);
-                    s.Append("_");
-                    s.Append(now.Minute);
-                    s.Append("_");
-                    s.Append(now.Second);
-                    s.Append("_");
-                    s.Append(now.Millisecond);
-                    s.Append(".png");
-                }
-
-                string file = s.ToString();
-                if (!Directory.Exists(Directory.GetParent(file).Name))
-                {
-                    // ScreenShot フォルダーがなければ、作ります。
-                    Directory.CreateDirectory(Directory.GetParent(file).Name);
-                }
-
-                bm.Save(file, System.Drawing.Imaging.ImageFormat.Png);
-            }
-        }
-
-        //────────────────────────────────────────
-
-        /// <summary>
-        /// 保存する画像の作成。
+        /// 保存する画像の作成。Save1、Save3で共通。
         /// </summary>
         public static Bitmap CreateSaveImage(
             Usercontrolview_Infodisplay infodisplay,
@@ -219,94 +148,6 @@ namespace Xenon.FrameMemo
 
             return bm;
         }
-
-        //────────────────────────────────────────
-
-        /// <summary>
-        /// 全フレームの画像を保存。
-        /// </summary>
-        /// <param name="infodisplay"></param>
-        /// <param name="pcchkInfo"></param>
-        /// <param name="ucCanvas"></param>
-        public static void Save3(
-            Usercontrolview_Infodisplay infodisplay,
-            CheckBox pcchkInfo,
-            UcCanvas ucCanvas
-            )
-        {
-            if (null != infodisplay.MemorySprite.Bitmap)
-            {
-
-                // 列数と行数。
-                int nCols = (int)infodisplay.MemorySprite.CountcolumnResult;
-                int nRows = (int)infodisplay.MemorySprite.CountrowResult;
-
-                // ファイル名の頭。
-                StringBuilder s1 = new StringBuilder();
-                {
-                    s1.Append(Application.StartupPath);
-                    s1.Append("\\ScreenShot\\");
-
-                    DateTime now = System.DateTime.Now;
-                    s1.Append(now.Year);
-                    s1.Append("_");
-                    s1.Append(now.Month);
-                    s1.Append("_");
-                    s1.Append(now.Day);
-                    s1.Append("_");
-                    s1.Append(now.Hour);
-                    s1.Append("_");
-                    s1.Append(now.Minute);
-                    s1.Append("_");
-                    s1.Append(now.Second);
-                    s1.Append("_");
-                    s1.Append(now.Millisecond);
-                }
-
-
-                for (int nRow = 1; nRow <= nRows; nRow++)
-                {
-                    for (int nCol = 1; nCol <= nCols; nCol++)
-                    {
-                        int nCell = (nRow - 1) * nCols + nCol;
-                        System.Console.WriteLine("r" + nRow + " c" + nCol + " nCell" + nCell + "  nRows" + nRows + " nCols" + nCols);
-
-
-                        ucCanvas.CropForceTxt.Text = nCell.ToString();
-
-                        Bitmap bm = Actions.CreateSaveImage(
-                            infodisplay,
-                            pcchkInfo,
-                            ucCanvas
-                            );
-
-
-
-                        // ファイル名を適当に作成。
-                        StringBuilder s = new StringBuilder();
-                        {
-                            s.Append(s1.ToString());
-                            s.Append("_c");
-                            s.Append(nCell.ToString());
-                            s.Append(".png");
-                        }
-
-                        string file = s.ToString();
-                        if (!Directory.Exists(Directory.GetParent(file).Name))
-                        {
-                            // ScreenShot フォルダーがなければ、作ります。
-                            Directory.CreateDirectory(Directory.GetParent(file).Name);
-                        }
-
-                        bm.Save(file, System.Drawing.Imaging.ImageFormat.Png);
-
-                    }
-                }
-
-            }
-        }
-
-        //────────────────────────────────────────
 
         /// <summary>
         /// 切抜きフレームの描画。
@@ -708,10 +549,8 @@ namespace Xenon.FrameMemo
             }
         }
 
-        //────────────────────────────────────────
-        #endregion
-
-
-
+        ImageHelper()
+        {
+        }
     }
 }

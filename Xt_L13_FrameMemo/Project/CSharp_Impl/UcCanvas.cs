@@ -8,9 +8,15 @@ using System.Text;
 using System.Windows.Forms;
 
 using Xenon.Lib;
+using SavingImage = Grayscale.FrameMemo.Actions.SavingImage;
+using SavingAllFrames = Grayscale.FrameMemo.Actions.SavingAllFrames;
+using Grayscale.FrameMemo.Commons;
 
-namespace Xenon.FrameMemo
+namespace Grayscale.FrameMemo
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class UcCanvas : UserControl, Usercontrolview
     {
 
@@ -279,7 +285,7 @@ namespace Xenon.FrameMemo
                 {
                     // 切抜き
 
-                    Actions.DrawCrop(
+                    ImageHelper.DrawCrop(
                         g,
                         bOnWindow,
                         this.infodisplay.MemorySprite,
@@ -296,7 +302,7 @@ namespace Xenon.FrameMemo
                 {
                     // 全体図
 
-                    Actions.DrawWhole(
+                    ImageHelper.DrawWhole(
                         g,
                         bOnWindow,
                         this.infodisplay.MemorySprite,
@@ -964,11 +970,13 @@ namespace Xenon.FrameMemo
         /// <param name="e"></param>
         private void pcbtnSaveImg_Click(object sender, EventArgs e)
         {
-            Actions.Save1(
-                this.Infodisplay,
-                this.PcchkInfo,
-                this
-                );
+            // [画像を保存]ボタンを押したときの内容。
+            {
+                SavingImage.ContextModel context = new SavingImage.ContextModel(this);
+                SavingImage.InputModel input = new SavingImage.InputModel(this.Infodisplay, this.InfoCheckBox);
+                SavingImage.OutputModel output = new SavingImage.OutputModel();
+                SavingImage.Action.Perfrom(context, input, output);
+            }
         }
 
         //────────────────────────────────────────
@@ -980,11 +988,13 @@ namespace Xenon.FrameMemo
         /// <param name="e"></param>
         private void ccButtonEx1_Click(object sender, EventArgs e)
         {
-            Actions.Save3(
-                this.Infodisplay,
-                this.PcchkInfo,
-                this
-                );
+            // 全フレームの画像を保存。
+            {
+                SavingAllFrames.ContextModel context = new SavingAllFrames.ContextModel(this);
+                SavingAllFrames.InputModel input = new SavingAllFrames.InputModel(this.Infodisplay, this.InfoCheckBox);
+                SavingAllFrames.OutputModel output = new SavingAllFrames.OutputModel();
+                SavingAllFrames.Action.Perfrom(context, input, output);
+            }
         }
 
         //────────────────────────────────────────
@@ -1387,7 +1397,7 @@ namespace Xenon.FrameMemo
 
         //────────────────────────────────────────
 
-        public CheckBox PcchkInfo
+        public CheckBox InfoCheckBox
         {
             get
             {

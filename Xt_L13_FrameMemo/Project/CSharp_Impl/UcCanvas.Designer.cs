@@ -1,4 +1,4 @@
-﻿namespace Xenon.FrameMemo
+﻿namespace Grayscale.FrameMemo
 {
     partial class UcCanvas
     {
@@ -66,9 +66,9 @@
             this.gridXTxt = new System.Windows.Forms.TextBox();
             this.gridYTxt = new System.Windows.Forms.TextBox();
             this.gridXyLbl = new System.Windows.Forms.Label();
-            this.pcbtnSaveImgFrames = new Xenon.FrameMemo.CustomcontrolButtonEx();
-            this.pcbtnSaveImg = new Xenon.FrameMemo.CustomcontrolButtonEx();
-            this.pcbtnOpen = new Xenon.FrameMemo.CustomcontrolButtonEx();
+            this.pcbtnSaveImgFrames = new Grayscale.FrameMemo.CustomcontrolButtonEx();
+            this.pcbtnSaveImg = new Grayscale.FrameMemo.CustomcontrolButtonEx();
+            this.pcbtnOpen = new Grayscale.FrameMemo.CustomcontrolButtonEx();
             this.SuspendLayout();
             // 
             // pclblMouseDrag

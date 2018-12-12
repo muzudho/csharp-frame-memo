@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Xenon.FrameMemo
+namespace Grayscale.FrameMemo
 {
     public partial class CustomcontrolButtonEx : Button
     {
