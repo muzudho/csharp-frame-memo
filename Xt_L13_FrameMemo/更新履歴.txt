@@ -1,0 +1,12 @@
+ver1.08改1
+
+	・[画像を保存]ボタンを押したとき、ScreenShotディレクトリーが無ければ
+	  作るようにしました。
+
+
+                string file = s.ToString();
+                if (!Directory.Exists(Directory.GetParent(file).Name))
+                {
+                    // ScreenShot フォルダーがなければ、作ります。
+                    Directory.CreateDirectory(Directory.GetParent(file).Name);
+                }
